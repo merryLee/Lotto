@@ -1,12 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+  <head>
+	<jsp:include page="/views/common/settings.jsp"></jsp:include>
+    <title>Oh! Lotto! 회원가입</title>
+  </head>
+  <body>
+<jsp:include page="/views/common/header.jsp"></jsp:include>
 
-</body>
+
+<div id="join">
+
+<div class="container py-5" style="background-color: #eeeeee;">
+
+join
+
+</div>
+
+
+</div>
+
+
+<jsp:include page="/views/common/footer.jsp"></jsp:include>
+<jsp:include page="/views/common/optional.jsp"></jsp:include>
+  </body>
 </html>
