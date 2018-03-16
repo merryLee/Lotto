@@ -1,12 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="root" value="${pageContext.request.contextPath}"/>	
+<div id="footer">
+	<div id="sitemap" class="container py-3">
+		<div class="row">
+			<div class="col-md-3 py-5">
+				<h5>HOME</h5>
+				<ul>
+				<li><a href="">HOME</a></li>
+				</ul>
+			</div>
+			<div class="col-md-3 py-5">
+				<h5>로또정보</h5>
+				<ul>
+				<li><a href="">게임안내</a></li>
+				<li><a href="">게임결과</a></li>
+				<li><a href="">지급안내</a></li>
+				<li style="padding-bottom: 0;"><a href="">판매점</a></li>			
+				</ul>
+			</div>
+			<div class="col-md-3 py-5">
+				<h5>로또구매</h5>
+				<ul>
+				<li><a href="">로또구매</a></li>
+				</ul>
+			</div>
+			<div class="col-md-3 py-5">
+				<h5>공지사항</h5>
+				<ul>
+				<li><a href="">공지사항</a></li>
+				<li><a href="">찾아오시는길</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div style="border-top: 1px solid rgba(255,255,255,0.1);"></div>
+	<div id="copyright" class="container py-3">
+		<div class="row">
+		<div class="col-md-12">
+			<p>Copyright (C) 2018 Merry. All rights reserved.</p>
+		</div>
+		</div>
+	</div>
+</div>
