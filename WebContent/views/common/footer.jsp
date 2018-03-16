@@ -24,7 +24,7 @@
 				<h5>로또구매</h5>
 				<ul>
 				<li><a href="">로또구매</a></li>
-				</ul>>
+				</ul>
 			</div>
 			<div class="col-md-3 py-5">
 				<h5>공지사항</h5>
