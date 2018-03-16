@@ -9,8 +9,15 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<span style="margin-right: 20px;">이선민님 반갑습니다</span> <a href="#"
-							style="margin-right: 20px">로그인</a> <a href="#">회원가입</a>
+						<c:if test="${userInfo == null}">
+						<a href="${root}/user/login" style="margin-right: 20px">로그인</a>
+						<a href="${root}/user/join">회원가입</a>
+						</c:if>
+						<c:if test="${userInfo != null}">
+						<span style="margin-right: 20px;">이선민님 반갑습니다</span>
+						<a href="#"	style="margin-right: 20px">로그아웃</a>
+						<a href="#">마이페이지</a>
+						</c:if>
 					</div>
 				</div>
 			</div>
@@ -18,7 +25,7 @@
 
 		<nav id="main-header" class="navbar navbar-expand-lg border-b py-2">
 			<div class="container">
-				<a class="navbar-brand" href="#"> <img
+				<a class="navbar-brand" href="${root}/common/index"> <img
 					class="d-inline-block align-top"
 					src="${root}/resources/img/mainlogo.png" height="30" alt="">
 				</a>
@@ -32,7 +39,7 @@
 
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto">
-						<li class="nav-item"><a class="nav-link" href="#">HOME</a></li>
+						<li class="nav-item"><a class="nav-link" href="${root}/common/index">HOME</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">로또정보</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">로또구매</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
