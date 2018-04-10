@@ -3,35 +3,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="/views/common/settings.jsp"></jsp:include>
-	<title>O Lotto - 아이디 검사하기</title>
+<%@ include file="/views/common/settings.jsp" %>
 </head>
 <body>
-	
 <script>
+$(document).attr('title', 'O Lotto - 아이디 검사하기');
 $(document).ready(function(){
 
 	var idFlag = false;
 	var checkedId;
-	
-	$("#id").on('keyup', function(key) {
-		if(key.keyCode == '13') {
-			alert(key.keyCode);
+
+	$("#idsearch").on('click', function(e) {
+		var id = $("#id").val();
+		var idReg = /^[A-Za-z0-9]{6,20}$/;
+		if(idReg.test(id)) {
+			$.get({
+				url: '${root}/user/idcheck',
+				data: {'id' : id},
+				success: function(data) {
+					checkResult(data);
+				},
+				error: function() {
+					alert('error');
+				},
+				dataType: 'json'
+			});
+		} else {
+			$("#idHelp").text('아이디는 6자-20자 영문, 숫자만 사용가능합니다.');
+			idFlag = false;
+			checkedId = '';
 		}
 	});
-	$("#idcheck").on('click', function() {
-		
-/*  	document.idckform.action = "${root}/user";
-		document.idckform.submit(); */
-		
-		checkedId = $("#id").val();
-		idFlag = true;
-		alert(checkedId);
-	});
+	
+	function checkResult(data) {
+		if(!data.idcount) {
+			$("#idHelp").text(data.id.toUpperCase()+' 아이디는 사용가능합니다.');
+			idFlag = true;
+			checkedId = data.id.toUpperCase();
+		} else {
+			$("#idHelp").text(data.id.toUpperCase()+' 아이디는 사용할 수 없습니다.');
+			idFlag = false; 
+			checkedId = '';
+		}
+	}
 	
 	$("#use").on('click', function() {
 		if(idFlag) {
 			$("#id", opener.document).val(checkedId);
+			checkedId = '';
 			self.close();
 		}
 	});
@@ -43,7 +62,7 @@ $(document).ready(function(){
 	<header class="sticky-top">
 		<nav class="navbar navbar-expand-md border-b">
 			<div class="container">
-				<img class="" src="${root}/lotto/resources/img/mainlogo.png" style="height: 26px;">
+				<img class="" src="${root}/resources/img/mainlogo.png" style="height: 26px;">
 			</div>
 		</nav>
 	</header>
@@ -64,12 +83,12 @@ $(document).ready(function(){
 				<input type="text" class="form-control form-control-sm" id="id" placeholder="">
 			</div>
 			<div class="col-3">
-				<input type="button" id="idcheck" class="btn btn-sm btn-dark" value="중복검사">
+				<input type="button" id="idsearch" class="btn btn-sm btn-dark" value="중복검사">
 			</div>
 		</div>
 		<div class="form-group form-row">	
 			<div class="col-12">
-				<small>아이디는 사용가능합니다.</small>
+				<small id="idHelp">아이디는 6자-20자 영문, 숫자만 사용가능합니다.</small>
 			</div>
 		</div>
 			
@@ -97,7 +116,7 @@ $(document).ready(function(){
 		</div>
 	</div>
 
-</div> <!-- idcheck -->
+	</div> <!-- idcheck -->
 	<jsp:include page="/views/common/optional.jsp"></jsp:include>
 </body>
 </html>
