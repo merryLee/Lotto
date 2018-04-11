@@ -17,8 +17,8 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 	<context:annotation-config/>
-	<context:component-scan base-package="com.merry.lotto.member.controller"/>
 	<context:component-scan base-package="com.merry.lotto.common.controller"/>
+	<context:component-scan base-package="com.merry.lotto.member.controller"/>
 	
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->

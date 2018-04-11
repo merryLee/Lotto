@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.merry.lotto.common.dao.CommonDao">
+    
+    <select id="getRecentNanum" parameterType="String" resultType="com.merry.lotto.game.model.NanumDto">
+    <![CDATA[
+		select nanumno, nanum1, nanum2, nanum3, nanum4, nanum5, nanum6, nanum7, date, url
+		from nanum
+		where date <= #{date}
+		order by date desc
+		limit 1
+    ]]>
+    </select>
+    
+    
+    
+</mapper>
