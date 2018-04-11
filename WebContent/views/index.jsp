@@ -6,6 +6,7 @@
 $(document).attr('title', 'O Lotto - 온라인 로또 구매 대행');
 $(document).ready(function(){
 
+	
 	if('${ninfo}' != null && '${ninfo}' != '') {
 		alert('ninfo는 값이있음!');
 		$("#nextno").html('<strong>${ninfo.nanumno + 1}회 추첨방송</strong>');
@@ -21,17 +22,8 @@ $(document).ready(function(){
 		},
 		dataType: 'text'
 	});
-	
-	$.get({
-		url: '${root}/common/nexttime',
-		success: function(data) {
- 			$("#nexttime").text('1일 1시간 1초');
-		},
-		error: function() {
-			alert('error');
-		},
-		dataType: 'text'
-	});
+
+	nextTime();
 
 	var w = $("#sec1").width();
 	var h = w * 0.5625;
@@ -55,6 +47,19 @@ $(document).ready(function(){
 		$("#sec3>a>div").css('background-color', '#BEDAFE');
     });
 });
+function nextTime() {
+	$.get({
+		url: '${root}/common/nexttime',
+		success: function(data) {
+ 			$("#nexttime").text(data);
+		},
+		error: function() {
+			alert('error');
+		},
+		dataType: 'text'
+	});
+	setTimeout('nextTime()', 1000);
+}
 </script>
 
 <div id="main">
@@ -76,18 +81,18 @@ $(document).ready(function(){
 				<iframe id="bc" width="544" height="306" src="http://serviceapi.nmv.naver.com/flash/convertIframeTag.nhn?vid=7941E1BE189EB18A370508BA95D58F5A04AF&outKey=V1268cd6a0cc975eddc826b00d40fb9e81a514cbf3970cfe322266b00d40fb9e81a51" frameborder="no" scrolling="no" allow='autoplay; encrypted-media' allowfullscreen></iframe>
 			</div>
 			<div id="sec2" class="col-md-3 py-3">
-				<div class="px-3" style="background-color: #F2F8FE;">
+				<div class="p-3" style="background-color: #F2F8FE;">
 					<div class="align-middle">
 						<h4 id="nextno">추첨방송</h4><br/>
 						<h5 id="nextbs"></h5><br/>
 						<h6>남은시간</h6>
-						<h4 id="nexttime"></h4>
+						<h5 id="nexttime"></h5>
 					</div>
 				</div>
 			</div>
 			<div id="sec3" class="col-md-3 py-3 text-white">
 				<a style="color: inherit;" href="#">
-				<div class="px-3" style="background-color: #BEDAFE;">
+				<div class="p-3" style="background-color: #BEDAFE;">
 					<div class="align-middle text-center"><h4><strong>로또구매<br/>바로가기</strong></h4></div>
 				</div></a>
 			</div>

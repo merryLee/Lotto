@@ -40,15 +40,9 @@ public class CommonController {
 		return commonService.getNextDay();
 	}
 	
-	@RequestMapping(value="/nexttime", method=RequestMethod.GET)
+	@RequestMapping(value="/nexttime", method=RequestMethod.GET, produces="text/plain; charset=utf-8")
 	public @ResponseBody String nexttime() {
-		String today = "";
-		String next = "2222";
-		
-		/*		JSONObject json = new JSONObject();
-		json.put("idcount", cnt);
-		json.put("id", id);*/
-		return next;
+		return commonService.getNextTime();
 	}
 	
 }
