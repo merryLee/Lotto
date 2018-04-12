@@ -2,23 +2,25 @@ package com.merry.lotto.member.service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.merry.lotto.member.dao.MemberDao;
 import com.merry.lotto.member.model.MemberDetailDto;
-import com.merry.lotto.member.model.MemberDto;
 
 @Service
 public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	private SqlSession sqlSession;
-//	private MemberDao memberDao;
+	@Autowired
+	private JavaMailSender mailSender;
 
 	@Override
 	public int idCheck(String id) {
@@ -56,5 +58,33 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.login(map);
 	}
 
+	@Override
+	public String findId(MemberDetailDto memberDetailDto) {
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		return memberDao.findId(memberDetailDto);
+	}
+	
+	@Override
+	public String findPass(MemberDetailDto memberDetailDto) {
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+//		String email = memberDao.findPass(memberDetailDto);
+		String email = "ismpink@daum.net";
+		if(email != null) {
+			resetPassword(memberDao, memberDetailDto.getMid(), email);
+		}
+		return email;
+	}
+
+	private void resetPassword(MemberDao memberDao, String mid, String email) {
+		//비밀번호재설정
+		String newPwd = UUID.randomUUID().toString().replaceAll("-", "").substring(0, 10);	//임시비밀번호생성
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("userid", mid);
+		map.put("password", newPwd);
+		memberDao.resetPass(map);
+		//메일발송
+		PwdMailSender pwdMailSender = new PwdMailSender(mailSender);
+		pwdMailSender.sendMail(email, newPwd);
+	}
 
 }

@@ -12,6 +12,10 @@ public interface MemberDao {
 	int getMno(String mid);
 	int loginCheck(Map<String, String> map);
 	MemberDetailDto login(Map<String, String> map);
+	String findId(MemberDetailDto memberDetailDto);
+	String findPass(MemberDetailDto memberDetailDto);
+	void resetPass(Map<String, String> map);
+	
 	
 /*	
 	void deleteMember(String id);

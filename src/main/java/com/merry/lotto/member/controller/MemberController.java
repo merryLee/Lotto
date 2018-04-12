@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.merry.lotto.member.model.MemberDetailDto;
+import com.merry.lotto.member.model.MemberDto;
 import com.merry.lotto.member.service.MemberService;
 
 @Controller
@@ -93,4 +94,32 @@ public class MemberController {
 		return "redirect:/views/index.jsp";
 	}
 	
+	@RequestMapping(value="/findid", method=RequestMethod.POST)
+	public ModelAndView findId(MemberDetailDto memberDetailDto) {
+		ModelAndView mav = new ModelAndView();
+		String viewName;
+		String fid = memberService.findId(memberDetailDto);
+		if(fid != null) {
+			viewName = "/views/login/findid_ok";
+		} else {
+			viewName = "/views/login/findid_fail";
+		}
+		mav.addObject("fid", fid);
+		mav.setViewName(viewName);
+		return mav;
+	}
+	
+	@RequestMapping(value="/findpass", method=RequestMethod.POST)
+	public ModelAndView findPass(MemberDetailDto memberDetailDto) {
+		ModelAndView mav = new ModelAndView();
+		String viewName;
+		String email = memberService.findPass(memberDetailDto);
+		if(email != null) {
+			viewName = "/views/login/findpass_ok";
+		} else {
+			viewName = "/views/login/findpass_fail";
+		}
+		mav.setViewName(viewName);
+		return mav;
+	}
 }
