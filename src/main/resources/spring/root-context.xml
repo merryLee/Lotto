@@ -10,8 +10,8 @@
 	<!-- Root Context: defines shared resources visible to all other web components 
 	root-context.xml는 jsp와 관련이 없는 객체(bean)를 설정해줍니다. 아래 그림과 같이(service, repository) 비즈니스 로직을 위한 설정입니다.	-->
 	
-	
 	<context:annotation-config/>
+	<context:component-scan base-package="com.merry.lotto.common.service"/>
 	<context:component-scan base-package="com.merry.lotto.member.service"/>
 	
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">

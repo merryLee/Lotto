@@ -25,6 +25,31 @@
 	background-color: #F4F6F7 !important;
 }
 
+/* index */
+#sec2 div, #sec3 div {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+#sec2 div>div, #sec3 div>div {
+	display: table-cell;
+}
+#main-image {
+	 background-image: url('../img/mainimage1.png');
+	 background-position:center top;
+	 background-size:cover;
+	 background-repeat:no-repeat;
+}
+.mimg-padding {
+		display: none;
+}
+@media (min-width: 992px) {
+	.mimg-padding {
+		display: block;
+	}
+}
+
+
 /* header */
 #header, #header a {
 	color: #777777;

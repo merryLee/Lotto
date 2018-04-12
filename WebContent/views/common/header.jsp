@@ -6,6 +6,20 @@
 <%@ include file="/views/common/settings.jsp" %>
 </head>
 <body>
+<c:if test="${ninfo == null}"><c:redirect url="/common/setninfo"/></c:if>
+<c:set var="ballsrc" value="${root}/resources/img/lottoball/ball_"/> 
+<script>
+$(document).ready(function(){
+   	$.get({
+		url: '${root}/common/ninfo',
+		data: {'path' : $(location).attr('href')},
+		error: function() {
+			alert('error');
+		}
+	});
+});
+</script>
+
 <div id="header">
 	<header class="sticky-top" style="background-color: white;">
 
@@ -13,11 +27,11 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<c:if test="${userInfo == null}">
+						<c:if test="${userinfo == null}">
 						<a href="${root}/user/login" style="margin-right: 20px">로그인</a>
 						<a href="${root}/user/join">회원가입</a>
 						</c:if>
-						<c:if test="${userInfo != null}">
+						<c:if test="${userinfo != null}">
 						<span style="margin-right: 20px;">이선민님 반갑습니다</span>
 						<a href="#"	style="margin-right: 20px">로그아웃</a>
 						<a href="#">마이페이지</a>
@@ -50,24 +64,15 @@
 					</ul>
 
 					<div class="my-2 my-lg-0">
-						<span id="resultno">795회 추첨번호</span>
-						<img class=""
-							src="${root}/resources/img/lottoball/ball_3.png" height="30"
-							alt=""> <img class=""
-							src="${root}/resources/img/lottoball/ball_10.png" height="30"
-							alt=""> <img class=""
-							src="${root}/resources/img/lottoball/ball_13.png" height="30"
-							alt=""> <img class=""
-							src="${root}/resources/img/lottoball/ball_26.png" height="30"
-							alt=""> <img class=""
-							src="${root}/resources/img/lottoball/ball_34.png" height="30"
-							alt=""> <img class=""
-							src="${root}/resources/img/lottoball/ball_38.png" height="30"
-							alt="">
-							<i class="fas fa-plus" style="vertical-align: middle;"></i>
-							<img class=""
-							src="${root}/resources/img/lottoball/ball_36.png" height="30"
-							alt="">
+						<span id="resultno">${ninfo.nanumno}회 추첨번호</span>
+						<img id="nimg1" src="${ballsrc}${ninfo.nanum1}.png" height="30" alt="">
+						<img id="nimg2" src="${ballsrc}${ninfo.nanum2}.png" height="30" alt="">
+						<img id="nimg3" src="${ballsrc}${ninfo.nanum3}.png" height="30" alt="">
+						<img id="nimg4" src="${ballsrc}${ninfo.nanum4}.png" height="30" alt="">
+						<img id="nimg5" src="${ballsrc}${ninfo.nanum5}.png" height="30" alt="">
+						<img id="nimg6" src="${ballsrc}${ninfo.nanum6}.png" height="30" alt="">
+<!-- 						<i class="fas fa-plus" style="vertical-align: middle;"></i> -->
+						<img id="nimg7" src="${ballsrc}${ninfo.nanum7}.png" height="30" alt="">
 					</div>
 				</div>
 
