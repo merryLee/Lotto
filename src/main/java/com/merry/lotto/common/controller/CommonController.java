@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,11 +23,26 @@ public class CommonController {
 	private CommonService commonService;
 	
 	@RequestMapping(value="/index", method=RequestMethod.GET)
-	public String join() {
+	public String mvindex() {
 		return "redirect:/views/index.jsp";
 	}
 	
 	@RequestMapping(value="/ninfo")
+	public String nanuminfo(@RequestParam("path") String path, HttpServletRequest request) {
+		NanumDto ndto = commonService.getRecentNanum();
+		ServletContext context = request.getServletContext();
+		context.setAttribute("ninfo", ndto);
+		return "redirect:"+path.substring(27);
+	}
+	@RequestMapping(value="/setninfo")
+	public String setninfo(HttpServletRequest request) {
+		NanumDto ndto = commonService.getRecentNanum();
+		ServletContext context = request.getServletContext();
+		context.setAttribute("ninfo", ndto);
+		return mvindex();
+	}
+
+/*	@RequestMapping(value="/ninfo")
 	public @ResponseBody String nanuminfo(HttpServletRequest request) {
 		System.out.println("ninfo진입!!");
 		NanumDto ndto = commonService.getRecentNanum();
@@ -34,7 +50,7 @@ public class CommonController {
 		JSONObject json = new JSONObject(ndto);
 		return json.toString();
 	}
-	
+*/	
 	@RequestMapping(value="/nextday", method=RequestMethod.GET, produces="text/plain; charset=utf-8")
 	public @ResponseBody String nextday() {
 		return commonService.getNextDay();

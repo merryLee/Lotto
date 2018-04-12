@@ -6,28 +6,17 @@
 <%@ include file="/views/common/settings.jsp" %>
 </head>
 <body>
+<c:if test="${ninfo == null}"><c:redirect url="/common/setninfo"/></c:if>
+<c:set var="ballsrc" value="${root}/resources/img/lottoball/ball_"/> 
 <script>
 $(document).ready(function(){
-	
- 	$.get({
+   	$.get({
 		url: '${root}/common/ninfo',
-		success: function(data) {
-			var source = '${root}/resources/img/lottoball/ball_';
-			$("#resultno").text(data.nanumno+'회 추첨번호');
-			$("#nimg1").attr('src', source+data.nanum1+'.png');
-			$("#nimg2").attr('src', source+data.nanum2+'.png');
-			$("#nimg3").attr('src', source+data.nanum3+'.png');
-			$("#nimg4").attr('src', source+data.nanum4+'.png');
-			$("#nimg5").attr('src', source+data.nanum5+'.png');
-			$("#nimg6").attr('src', source+data.nanum6+'.png');
-			$("#nimg7").attr('src', source+data.nanum7+'.png');
-		},
+		data: {'path' : $(location).attr('href')},
 		error: function() {
 			alert('error');
-		},
-		dataType: 'json'
+		}
 	});
-
 });
 </script>
 
@@ -75,15 +64,15 @@ $(document).ready(function(){
 					</ul>
 
 					<div class="my-2 my-lg-0">
-						<span id="resultno"></span>
-						<img id="nimg1" src="" height="30" alt="">
-						<img id="nimg2" src="" height="30" alt="">
-						<img id="nimg3" src="" height="30" alt="">
-						<img id="nimg4" src="" height="30" alt="">
-						<img id="nimg5" src="" height="30" alt="">
-						<img id="nimg6" src="" height="30" alt="">
-						<i class="fas fa-plus" style="vertical-align: middle;"></i>
-						<img id="nimg7" src="" height="30" alt="">
+						<span id="resultno">${ninfo.nanumno}회 추첨번호</span>
+						<img id="nimg1" src="${ballsrc}${ninfo.nanum1}.png" height="30" alt="">
+						<img id="nimg2" src="${ballsrc}${ninfo.nanum2}.png" height="30" alt="">
+						<img id="nimg3" src="${ballsrc}${ninfo.nanum3}.png" height="30" alt="">
+						<img id="nimg4" src="${ballsrc}${ninfo.nanum4}.png" height="30" alt="">
+						<img id="nimg5" src="${ballsrc}${ninfo.nanum5}.png" height="30" alt="">
+						<img id="nimg6" src="${ballsrc}${ninfo.nanum6}.png" height="30" alt="">
+<!-- 						<i class="fas fa-plus" style="vertical-align: middle;"></i> -->
+						<img id="nimg7" src="${ballsrc}${ninfo.nanum7}.png" height="30" alt="">
 					</div>
 				</div>
 

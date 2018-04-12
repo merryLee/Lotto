@@ -6,12 +6,6 @@
 $(document).attr('title', 'O Lotto - 온라인 로또 구매 대행');
 $(document).ready(function(){
 
-	
-	if('${ninfo}' != null && '${ninfo}' != '') {
-		alert('ninfo는 값이있음!');
-		$("#nextno").html('<strong>${ninfo.nanumno + 1}회 추첨방송</strong>');
-	}
-	
 	$.get({
 		url: '${root}/common/nextday',
 		success: function(data) {
@@ -83,7 +77,7 @@ function nextTime() {
 			<div id="sec2" class="col-md-3 py-3">
 				<div class="p-3" style="background-color: #F2F8FE;">
 					<div class="align-middle">
-						<h4 id="nextno">추첨방송</h4><br/>
+						<h4 id="nextno">${ninfo.nanumno}회 추첨방송</h4><br/>
 						<h5 id="nextbs"></h5><br/>
 						<h6>남은시간</h6>
 						<h5 id="nexttime"></h5>
