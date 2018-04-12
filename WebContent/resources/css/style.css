@@ -14,7 +14,16 @@
 .border-d {
 	border-bottom: 1px solid #747474;
 }
+.valid-color {
+	color: #28a745 !important;
+}
+.invalid-color {
+	color: #dc3545 !important;
+}
 
+.form-control:disabled, .form-control[readonly] {
+	background-color: #F4F6F7 !important;
+}
 
 /* header */
 #header, #header a {

@@ -7,6 +7,11 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+	<!---jsp와 관련 있는 객체(bean)를 설정해줍니다. (controller, MultipartResolver(파일 업로드), Interceptor(로그인) 등) 
+ 		-URI와 관련 설정을 담는 클래스는 servlet-context.xml에 들어가야 합니다.
+		-WEB Application에서 Client의 요청을 받기 위한 설정입니다. -->
+
+
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->

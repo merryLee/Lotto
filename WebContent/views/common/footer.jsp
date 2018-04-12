@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="root" value="${pageContext.request.contextPath}"/>	
 <div id="footer">
 	<div id="sitemap" class="container py-3">
 		<div class="row">
@@ -43,4 +41,7 @@
 		</div>
 		</div>
 	</div>
-</div>
+</div><!-- footer -->
+	<jsp:include page="/views/common/optional.jsp"></jsp:include>
+</body>
+</html>

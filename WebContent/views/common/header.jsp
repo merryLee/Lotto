@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="root" value="${pageContext.request.contextPath}" />
+<!DOCTYPE html>
+<html>
+<head>
+<%@ include file="/views/common/settings.jsp" %>
+</head>
+<body>
 <div id="header">
 	<header class="sticky-top" style="background-color: white;">
 
@@ -46,23 +50,23 @@
 					</ul>
 
 					<div class="my-2 my-lg-0">
-						<span id="resultno">790회 추첨번호</span>
+						<span id="resultno">795회 추첨번호</span>
 						<img class=""
-							src="${root}/resources/img/lottoball/ball_1.png" height="30"
+							src="${root}/resources/img/lottoball/ball_3.png" height="30"
 							alt=""> <img class=""
-							src="${root}/resources/img/lottoball/ball_21.png" height="30"
+							src="${root}/resources/img/lottoball/ball_10.png" height="30"
 							alt=""> <img class=""
-							src="${root}/resources/img/lottoball/ball_24.png" height="30"
+							src="${root}/resources/img/lottoball/ball_13.png" height="30"
 							alt=""> <img class=""
-							src="${root}/resources/img/lottoball/ball_28.png" height="30"
+							src="${root}/resources/img/lottoball/ball_26.png" height="30"
 							alt=""> <img class=""
-							src="${root}/resources/img/lottoball/ball_31.png" height="30"
+							src="${root}/resources/img/lottoball/ball_34.png" height="30"
 							alt=""> <img class=""
-							src="${root}/resources/img/lottoball/ball_44.png" height="30"
+							src="${root}/resources/img/lottoball/ball_38.png" height="30"
 							alt="">
 							<i class="fas fa-plus" style="vertical-align: middle;"></i>
 							<img class=""
-							src="${root}/resources/img/lottoball/ball_16.png" height="30"
+							src="${root}/resources/img/lottoball/ball_36.png" height="30"
 							alt="">
 					</div>
 				</div>
