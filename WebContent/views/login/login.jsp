@@ -61,8 +61,8 @@ function loginProcess(data) {
 				</div>
 			</form> <!-- loginForm -->
 			<div class="d-flex bd-highlight mb-3">
- 				<div class="mr-auto py-2 bd-highlight"><a class="col-form-label-sm text-dark" href="#" >아이디찾기</a></div>
- 				<div class="py-2 bd-highlight"><a class="col-form-label-sm text-dark" href="#">비밀번호재설정</a></div>
+ 				<div class="mr-auto py-2 bd-highlight"><a class="col-form-label-sm text-dark" href="${root}/user/findid" >아이디찾기</a></div>
+ 				<div class="py-2 bd-highlight"><a class="col-form-label-sm text-dark" href="${root}/user/findpass">비밀번호재설정</a></div>
 			</div>
 		</div> <!-- col4 -->
 	</div>

@@ -6,7 +6,7 @@
     <select id="idCheck" parameterType="String" resultType="int">
         select count(mid)
         from member
-        where mid = #{userid}
+        where mid = upper(#{userid})
     </select>
     
     <insert id="registerMember" parameterType="com.merry.lotto.member.model.MemberDetailDto">
@@ -22,23 +22,45 @@
     <select id="getMno" parameterType="String" resultType="int">
         select mno
         from member
-        where mid = #{userid}
+        where mid = upper(#{userid})
     </select>
     
     <select id="loginCheck" parameterType="java.util.Map" resultType="int">
         select count(1)
         from member
-        where mid = #{userid} and pass = #{userpass}
+        where mid = upper(#{userid}) and pass = #{userpass}
     </select>
 
     <select id="login" parameterType="java.util.Map" resultType="com.merry.lotto.member.model.MemberDetailDto">
    		select mid, name, birthdate, pass, email1, email2, joindate, mstatus, admin, d.*
 		from (select *
 			from member
-			where mid = #{userid} and pass = #{userpass}) m, mdetail d
+			where mid = upper(#{userid}) and pass = #{userpass}) m, mdetail d
 		where m.mno = d.mno
     </select>
     
+    <select id="findId" parameterType="com.merry.lotto.member.model.MemberDetailDto" resultType="String">
+		select mid
+		from (select mno, mid
+			from member
+			where name = #{name} and birthdate = #{birthdate} ) m, mdetail d
+		where m.mno = d.mno
+		and tel1 = #{tel1} and tel2 = #{tel2} and tel3 = #{tel3}
+    </select>
     
+    <select id="findPass" parameterType="com.merry.lotto.member.model.MemberDetailDto" resultType="String">
+		select concat(email1,'@',email2)
+		from ( select mno, email1, email2
+			from member
+			where mid = upper(#{mid}) and name = #{name}) m, mdetail d
+		where m.mno = d.mno
+		and tel1 = #{tel1} and tel2 = #{tel2} and tel3 = #{tel3}
+    </select>
+    
+    <update id="resetPass" parameterType="java.util.Map">
+    	update member
+		set pass = #{password}
+		where mid = upper(#{userid})
+    </update>
 
 </mapper>

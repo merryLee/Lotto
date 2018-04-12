@@ -1,7 +1,6 @@
 package com.merry.lotto.member.service;
 
 import com.merry.lotto.member.model.MemberDetailDto;
-import com.merry.lotto.member.model.MemberDto;
 
 public interface MemberService {
 
@@ -9,6 +8,9 @@ public interface MemberService {
 	int registerMember(MemberDetailDto memberDetailDto);
 	int loginCheck(String id, String pass);
 	MemberDetailDto login(String id, String pass);
+	String findId(MemberDetailDto memberDetailDto);
+	String findPass(MemberDetailDto memberDetailDto);
+	
 	
 	/*
 	void deleteMember(String id);
