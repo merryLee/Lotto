@@ -32,9 +32,9 @@ $(document).ready(function(){
 						<a href="${root}/user/join">회원가입</a>
 						</c:if>
 						<c:if test="${userinfo != null}">
-						<span style="margin-right: 20px;">이선민님 반갑습니다</span>
-						<a href="#"	style="margin-right: 20px">로그아웃</a>
-						<a href="#">마이페이지</a>
+						<span style="margin-right: 20px;">${userinfo.name}님 반갑습니다</span>
+						<a href="${root}/user/logout" style="margin-right: 20px">로그아웃</a>
+						<a href="${root}/mypage/myhome">마이페이지</a>
 						</c:if>
 					</div>
 				</div>

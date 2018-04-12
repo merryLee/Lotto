@@ -1,5 +1,8 @@
 package com.merry.lotto.member.service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.merry.lotto.member.dao.MemberDao;
 import com.merry.lotto.member.model.MemberDetailDto;
+import com.merry.lotto.member.model.MemberDto;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -33,7 +37,24 @@ public class MemberServiceImpl implements MemberService {
 		if(t1*t2 == 0) return 0;
 		else return mno;
 	}
-	
+
+	@Override
+	public int loginCheck(String id, String pass) {
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("userid", id);
+		map.put("userpass", pass);
+		return memberDao.loginCheck(map);
+	}
+
+	@Override
+	public MemberDetailDto login(String id, String pass) {
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("userid", id);
+		map.put("userpass", pass);
+		return memberDao.login(map);
+	}
 
 
 }
