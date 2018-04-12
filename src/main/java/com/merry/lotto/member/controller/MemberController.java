@@ -1,5 +1,7 @@
 package com.merry.lotto.member.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -63,6 +65,32 @@ public class MemberController {
 		mav.setViewName(viewName);
 		return mav;
 	}
+	
+	@RequestMapping("/logincheck")
+	public @ResponseBody String loginCheck(@RequestParam(value="id", required=true) String id,
+			@RequestParam(value="pass", required=true) String pass) {
+		System.out.println("loginCheck!!");
+		int cnt = memberService.loginCheck(id, pass);
+		return cnt+"";
+	}
+	
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	public String login(@RequestParam(value="id", required=true) String id,
+				@RequestParam(value="pass", required=true) String pass, HttpSession session) {
+		System.out.println(">>>>>>>>>>>>> 진입");
+		String url = "/views/index.jsp";
+		MemberDetailDto memberDetailDto = memberService.login(id, pass);
+		if(memberDetailDto == null)
+			url = login();
+		else	
+			session.setAttribute("userinfo", memberDetailDto);
+		return "redirect:" + url;
+	}
 
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("userinfo");
+		return "redirect:/views/index.jsp";
+	}
 	
 }

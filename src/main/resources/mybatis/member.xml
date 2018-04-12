@@ -24,5 +24,21 @@
         from member
         where mid = #{userid}
     </select>
+    
+    <select id="loginCheck" parameterType="java.util.Map" resultType="int">
+        select count(1)
+        from member
+        where mid = #{userid} and pass = #{userpass}
+    </select>
+
+    <select id="login" parameterType="java.util.Map" resultType="com.merry.lotto.member.model.MemberDetailDto">
+   		select mid, name, birthdate, pass, email1, email2, joindate, mstatus, admin, d.*
+		from (select *
+			from member
+			where mid = #{userid} and pass = #{userpass}) m, mdetail d
+		where m.mno = d.mno
+    </select>
+    
+    
 
 </mapper>
