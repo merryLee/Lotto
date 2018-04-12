@@ -71,7 +71,7 @@ $(document).ready(function(){
 						<img id="nimg4" src="${ballsrc}${ninfo.nanum4}.png" height="30" alt="">
 						<img id="nimg5" src="${ballsrc}${ninfo.nanum5}.png" height="30" alt="">
 						<img id="nimg6" src="${ballsrc}${ninfo.nanum6}.png" height="30" alt="">
-<!-- 						<i class="fas fa-plus" style="vertical-align: middle;"></i> -->
+ 						<i class="fas fa-plus" style="vertical-align: middle;"></i>
 						<img id="nimg7" src="${ballsrc}${ninfo.nanum7}.png" height="30" alt="">
 					</div>
 				</div>

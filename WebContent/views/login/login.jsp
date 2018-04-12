@@ -37,22 +37,35 @@ function loginProcess(data) {
 
 <div class="container py-5">
 	<div class="row py-5">
-		<div class="col-md-6 offset-md-3">
-		
+		<div class="col-md-4 offset-md-4">
 			<h3 class="text-center text-dark">로그인</h3>
 			<div class="border-b my-4"></div>
-			
 			<form id="loginForm" name="loginForm" method="post">
-		
-						<input type="text" class="form-control form-control-sm" id="id" name="id">
-						<input type="text" class="form-control form-control-sm" id="pass" name="pass">
-						
-						<input type="button" id="loginBtn" class="btn btn-sm btn-primary" value="로그인">
-
+				<div class="form-group form-row">
+					<label for="inputId" class="col-3 col-form-label col-form-label-sm">아이디</label>
+					<div class="col-9">
+						<input type="text" class="form-control form-control-sm" id="id" name="id" placeholder="" required="required">
+					</div>
+				</div>
+				<div class="form-group form-row">
+					<label for="inputPass" class="col-3 col-form-label col-form-label-sm">비밀번호</label>
+					<div class="col-9">
+						<input type="password" class="form-control form-control-sm" id="pass" name="pass" required="required">
+					</div>
+				</div>
+				<div class="border-b my-4"></div>
+				<div class="form-group form-row mb-0">
+					<div class="col-md-12 text-right">
+						<input type="button" id="loginBtn" class="btn btn-block btn-primary" value="로그인">
+					</div>
+				</div>
 			</form> <!-- loginForm -->
-		</div>
+			<div class="d-flex bd-highlight mb-3">
+ 				<div class="mr-auto py-2 bd-highlight"><a class="col-form-label-sm text-dark" href="#" >아이디찾기</a></div>
+ 				<div class="py-2 bd-highlight"><a class="col-form-label-sm text-dark" href="#">비밀번호재설정</a></div>
+			</div>
+		</div> <!-- col4 -->
 	</div>
 </div>
-
 </div> <!-- login -->
 <%@ include file="/views/common/footer.jsp" %>
