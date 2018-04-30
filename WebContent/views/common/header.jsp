@@ -20,6 +20,7 @@ $(document).ready(function(){
 });
 </script>
 
+
 <div id="header">
 	<header class="sticky-top" style="background-color: white;">
 
@@ -34,7 +35,15 @@ $(document).ready(function(){
 						<c:if test="${userinfo != null}">
 						<span style="margin-right: 20px;">${userinfo.name}님 반갑습니다</span>
 						<a href="${root}/user/logout" style="margin-right: 20px">로그아웃</a>
-						<a href="${root}/mypage/myhome">마이페이지</a>
+						
+							<c:if test="${userinfo.admin == 'N'}">
+							<a href="${root}/mypage/myhome">마이페이지</a>
+							</c:if>
+							<c:if test="${userinfo.admin == 'Y'}">
+							<a href="${root}}/mypage/myhome" style="margin-right: 20px">마이페이지</a>
+							<a href="${root}/admin/adminhome">관리자페이지</a>
+							</c:if>
+							
 						</c:if>
 					</div>
 				</div>
