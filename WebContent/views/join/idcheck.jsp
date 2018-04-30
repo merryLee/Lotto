@@ -59,7 +59,7 @@ $(document).ready(function(){
 
 <div id="idcheck">
 
-	<header class="sticky-top">
+	<header class="sticky-top" style="background-color: white;">
 		<nav class="navbar navbar-expand-md border-b">
 			<div class="container">
 				<img class="" src="${root}/resources/img/mainlogo.png" style="height: 26px;">
