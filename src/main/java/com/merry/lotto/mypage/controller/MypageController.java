@@ -14,9 +14,17 @@ public class MypageController {
 	@Autowired
 	private MypageService mypageService;
 	
-	@RequestMapping(value="/myhome", method=RequestMethod.GET)
-	public String mvmyhome() {
-		return "redirect:/views/mypage/myhome.jsp";
+	@RequestMapping(value="/mylotto", method=RequestMethod.GET)
+	public String mvmylotto() {
+		return "redirect:/views/mypage/mylotto.jsp";
+	}
+	@RequestMapping(value="/mypoint", method=RequestMethod.GET)
+	public String mvmypoint() {
+		return "redirect:/views/mypage/mypoint.jsp";
+	}
+	@RequestMapping(value="/myqna", method=RequestMethod.GET)
+	public String mvmyqna() {
+		return "redirect:/views/mypage/myqna.jsp";
 	}
 	@RequestMapping(value="/charge")
 	public String opencharge() {
