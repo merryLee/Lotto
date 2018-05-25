@@ -8,7 +8,7 @@ $(document).ready(function(){
 	$("#balance").text(balance.toLocaleString());
 	
 	$("#chargeBtn").on('click', function() {
-		window.open("${root}/mypage/charge", "포인트 충전", "width=360,height=545,top=100,left=100,location=no,status=no,titlebar=no,toolbar=no,resizable=no,scrollbars=no");
+		window.open("${root}/myinfo/charge", "포인트 충전", "width=360,height=545,top=100,left=100,location=no,status=no,titlebar=no,toolbar=no,resizable=no,scrollbars=no");
 	});
 	
 });

@@ -13,7 +13,7 @@ $(document).ready(function(){
 });
 
 function tossCharge() {
-	var balance = $("input:radio[name=value]:checked").val();
+	var balance = $("input:radio[name=radioValues]:checked").val();
 	if(balance == "" || balance == undefined) {
 		alert("충전금액을 확인하세요!");
 		return;
@@ -23,8 +23,8 @@ function tossCharge() {
 	}
 }
 function kakaoCharge() {
- 	var balance = $("input:radio[name=value]:checked").val();
-	if(balance == undefined || balance == undefined) {
+ 	var balance = $("input:radio[name=radioValues]:checked").val();
+	if(balance == "" || balance == undefined) {
 		alert("충전금액을 확인하세요!");
 		return;
 	} else {
@@ -46,7 +46,7 @@ function kakaoCharge() {
 
 	<div class="container py-5">
 
-	<form name="chargeForm" method="POST" action="" onsubmit="return false;">
+	<form id="chargeForm" name="chargeForm" method="post"">
 
 	<h6 class="text-dark"><strong>포인트충전</strong></h6>
 	<h6>충전하실 금액을 선택해주세요.</h6>
@@ -54,30 +54,30 @@ function kakaoCharge() {
 
 		<div class="form-group row px-2 mx-0 mb-0" style="font-size: 14px;">
 					<div class="form-check mb-0 col-4">
-						<input class="form-check-input" type="radio" name="value"
+						<input class="form-check-input" type="radio" name="radioValues"
 							id="value1" value="1000" checked>
 						<label for="radio1">1000원</label>
 					</div>
 					<div class="form-check mb-0 col-4">
-						<input class="form-check-input" type="radio" name="value"
+						<input class="form-check-input" type="radio" name="radioValues"
 							id="value2" value="3000">
 						<label for="radio2">3000원</label>
 					</div>
 					<div class="form-check mb-0 col-4">
-						<input class="form-check-input" type="radio" name="value"
+						<input class="form-check-input" type="radio" name="radioValues"
 							id="value3" value="5000"> <label for="radio3">5000원</label>
 					</div>
 					<div class="form-check mb-0 col-4">
-						<input class="form-check-input" type="radio" name="value"
-							id="value1" value="10000"> <label for="radio4">10000원</label>
+						<input class="form-check-input" type="radio" name="radioValues"
+							id="value4" value="10000"> <label for="radio4">10000원</label>
 					</div>
 					<div class="form-check mb-0 col-4">
-						<input class="form-check-input" type="radio" name="value"
-							id="value2" value="30000"> <label for="radio5">30000원</label>
+						<input class="form-check-input" type="radio" name="radioValues"
+							id="value5" value="30000"> <label for="radio5">30000원</label>
 					</div>
 					<div class="form-check mb-0 col-4">
-						<input class="form-check-input" type="radio" name="value"
-							id="value3" value="50000"> <label for="radio6">50000원</label>
+						<input class="form-check-input" type="radio" name="radioValues"
+							id="value6" value="50000"> <label for="radio6">50000원</label>
 					</div>
 		</div>
 		
