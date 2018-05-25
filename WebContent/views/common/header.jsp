@@ -37,10 +37,10 @@ $(document).ready(function(){
 						<a href="${root}/user/logout" style="margin-right: 20px">로그아웃</a>
 						
 							<c:if test="${userinfo.admin == 'N'}">
-							<a href="${root}/mypage/mylotto">마이페이지</a>
+							<a href="${root}/mylotto/list">마이페이지</a>
 							</c:if>
 							<c:if test="${userinfo.admin == 'Y'}">
-							<a href="${root}}/mypage/myhome" style="margin-right: 20px">마이페이지</a>
+							<a href="${root}}/mylotto/list" style="margin-right: 20px">마이페이지</a>
 							<a href="${root}/admin/adminhome">관리자페이지</a>
 							</c:if>
 							

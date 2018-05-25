@@ -42,156 +42,49 @@ $(document).ready(function(){
 	    </tr>
 	  </thead>
 	  <tbody>
+
+<c:forEach varStatus="i" var="article" items="${articles}">	  
 	    <tr>
-	      <th scope="row">803회</th>
-	      <td>0000000001</td>
-	      <td>13 23 29 32 38 40</td>
-	      <td>2018/04/21 오전 9시 20분</td>
-	      <td><a href="#" class="text-dark">구매완료</a></td>
+	      <th scope="row">${article.lottono}회</th>
+	      <td>${article.order_no}</td>
+	      <td>${article.lnum1} ${article.lnum2} ${article.lnum3} ${article.lnum4} ${article.lnum5} ${article.lnum6}</td>
+	      <td>${article.date}</td>
+	<c:choose>	   
+		<c:when test="${article.code == '구매신청'}"><td><a href="#" class="text-dark">${article.code}</a></td></c:when>
+		<c:when test="${article.code == '구매중'}"><td class="text-muted">${article.code}</td></c:when>
+		<c:when test="${article.code == '구매완료'}"><td><a href="#" class="text-dark">${article.code}</a></td></c:when>
+		<c:when test="${article.code == '취소'}"><td class="text-muted">${article.code}</td></c:when>
+		<c:otherwise><td class="text-muted">오류</td></c:otherwise>
+	</c:choose>   
 	    </tr>
-	    <tr>
-	      <th scope="row">803회</th>
-	      <td>0000000001</td>
-	      <td>13 23 29 32 38 40</td>
-	      <td>2018/04/21</td>
-	      <td class="text-muted">구매중</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">803회</th>
-	      <td>0000000001</td>      
-	      <td>13 23 29 32 38 40</td>
-	      <td>2018/04/21</td>
-	      <td class="text-muted">구매신청</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">803회</th>
-	      <td>0000000001</td>      
-	      <td>13 23 29 32 38 40</td>
-	      <td>2018/04/21</td>
-	      <td class="text-muted">구매신청</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">803회</th>
-	      <td>0000000001</td>      
-	      <td>13 23 29 32 38 40</td>
-	      <td>2018/04/21</td>
-	      <td class="text-muted">구매신청</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">803회</th>
-	      <td>0000000001</td>      
-	      <td>13 23 29 32 38 40</td>
-	      <td>2018/04/21</td>
-	      <td class="text-muted">구매신청</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">803회</th>
-	      <td>0000000001</td>      
-	      <td>13 23 29 32 38 40</td>
-	      <td>2018/04/21</td>
-	      <td class="text-muted">구매신청</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">803회</th>
-	      <td>0000000001</td>      
-	      <td>13 23 29 32 38 40</td>
-	      <td>2018/04/21</td>
-	      <td class="text-muted">구매신청</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">803회</th>
-	      <td>0000000001</td>      
-	      <td>13 23 29 32 38 40</td>
-	      <td>2018/04/21</td>
-	      <td class="text-muted">구매신청</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">803회</th>
-	      <td>0000000001</td>      
-	      <td>13 23 29 32 38 40</td>
-	      <td>2018/04/21</td>
-	      <td class="text-muted">구매신청</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">803회</th>
-	      <td>0000000001</td>      
-	      <td>13 23 29 32 38 40</td>
-	      <td>2018/04/21</td>
-	      <td class="text-muted">구매신청</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">803회</th>
-	      <td>0000000001</td>      
-	      <td>13 23 29 32 38 40</td>
-	      <td>2018/04/21</td>
-	      <td class="text-muted">구매신청</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">803회</th>
-	      <td>0000000001</td>      
-	      <td>13 23 29 32 38 40</td>
-	      <td>2018/04/21</td>
-	      <td class="text-muted">구매신청</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">803회</th>
-	      <td>0000000001</td>      
-	      <td>13 23 29 32 38 40</td>
-	      <td>2018/04/21</td>
-	      <td class="text-muted">구매신청</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">803회</th>
-	      <td>0000000001</td>      
-	      <td>13 23 29 32 38 40</td>
-	      <td>2018/04/21</td>
-	      <td class="text-muted">구매신청</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">803회</th>
-	      <td>0000000001</td>      
-	      <td>13 23 29 32 38 40</td>
-	      <td>2018/04/21</td>
-	      <td class="text-muted">구매신청</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">803회</th>
-	      <td>0000000001</td>      
-	      <td>13 23 29 32 38 40</td>
-	      <td>2018/04/21</td>
-	      <td class="text-muted">구매신청</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">803회</th>
-	      <td>0000000001</td>      
-	      <td>13 23 29 32 38 40</td>
-	      <td>2018/04/21</td>
-	      <td class="text-muted">구매신청</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">803회</th>
-	      <td>0000000001</td>      
-	      <td>13 23 29 32 38 40</td>
-	      <td>2018/04/21</td>
-	      <td class="text-muted">구매신청</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">803회</th>
-	      <td>0000000001</td>      
-	      <td>13 23 29 32 38 40</td>
-	      <td>2018/04/21</td>
-	      <td class="text-muted">구매신청</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">803회</th>
-	      <td>0000000001</td>      
-	      <td>13 23 29 32 38 40</td>
-	      <td>2018/04/21</td>
-	      <td class="text-muted">구매신청</td>
-	    </tr>
+</c:forEach>
 	  </tbody>
 	</table>
 	</div> <!-- table-responsive -->
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&lt;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&gt;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+---${navigator.navigator}
+
+
 </div> <!-- container -->
 </div> <!-- my_content -->
 </div> <!-- mymenu -->

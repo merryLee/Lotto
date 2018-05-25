@@ -1,4 +1,4 @@
-package com.merry.lotto.mypage.controller;
+/*package com.merry.lotto.mypage.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,3 +32,4 @@ public class MypageController {
 	}
 	
 }
+*/
