@@ -52,5 +52,14 @@
 			</props>
     	</property>
 	</bean>	
+	
+	<bean id="kakaoPayService" class="com.merry.lotto.mypage.service.KakaoPayServiceImpl">
+		<qualifier value="payKakao"></qualifier>
+	</bean>	
+	<bean id="tossPayService" class="com.merry.lotto.mypage.service.TossPayServiceImpl">
+		<qualifier value="payToss"></qualifier>
+	</bean>	
+		
+		
 		
 </beans>

@@ -8,19 +8,24 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
-
+import org.apache.ibatis.session.SqlSession;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.merry.lotto.member.dao.MemberDao;
+import com.merry.lotto.mypage.dao.MyinfoDao;
 
 @Service
 public class KakaoPayServiceImpl implements PayService {
 
+	@Autowired
+	private SqlSession sqlSession;
+	
 	private static final String TEST_CID = "TC0ONETIME";
 	private static final String ADMIN_KEY = "cabb9921d62c829e4874dbe79dfdcf2a";
-	private HttpSession session;
-	private String pg_token;
 	private String KAKAO_TID;
 	
 	@Override
@@ -98,38 +103,39 @@ public class KakaoPayServiceImpl implements PayService {
 	}
 
 	@Override
-	public String approve() {
-		System.out.println("KakaoApproveAction 진입");
+	@Transactional
+	public String approve(Map<String, String> map) {
+		Map<String, String> approveMap;
+		
 		String path = "/views/mypage/pay/chargefail.jsp";
-
-		System.out.println("KakaoApproveAction >>>>>>> " + pg_token + " " + KAKAO_TID);
-
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("pg_token", pg_token);
 		map.put("tid", KAKAO_TID);
-
-		String approveState = approveRequest(map);
-		System.out.println("String approve >>>>>>>> " + approveState);
-		session.removeAttribute("KAKAO_TID");
+		
+		approveMap = approveRequest(map);
+		String approveCode = approveMap.get("code");
+		String approveState = approveMap.get("result");
+		map.remove("tid");
+		this.KAKAO_TID = "";
 		
 		JSONTokener tokener = new JSONTokener(approveState);
 		JSONObject jsonObj = new JSONObject(tokener);
-		String code = (String) jsonObj.get("code");
-		if (code == null) {
+		
+		if ("200".equals(approveCode)) {
 			JSONObject jsonAmount = (JSONObject) jsonObj.get("amount");
-			long price = (long) jsonAmount.get("total");
+			int price = (int) jsonAmount.get("total") - (int) jsonAmount.get("vat");
+			String mno = map.get("mno"); 
+			
+			updateBalance(mno, price); // 멤버포인트디비값업데이트.
+			insertDeposit(mno, price);//입금관리내역 추가.
+			
 			path = "/views/mypage/pay/chargeok.jsp";
-
-			int cnt = 1; // 디비값업데이트.
-
 		}
 		
-
 		return path;
 	}
 
-	private String approveRequest(Map<String, String> map) {
-
+	private Map<String, String> approveRequest(Map<String, String> map) {
+		Map<String, String> resultMap = new HashMap<String, String>();
+		
 		String pg_token = map.get("pg_token");
 		String tid = map.get("tid");
 
@@ -162,33 +168,40 @@ public class KakaoPayServiceImpl implements PayService {
 				br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
 			}
 			String inputLine;
-			StringBuffer respapa = new StringBuffer();
+			StringBuffer resmsg = new StringBuffer();
 			while ((inputLine = br.readLine()) != null) {
-				respapa.append(inputLine);
+				resmsg.append(inputLine);
 			}
 			br.close();
-			result = respapa.toString();
+			result = resmsg.toString();
+			resultMap.put("code", responseCode+"");
+			resultMap.put("result", result);
+			
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		return result;
+		
+		return resultMap;
 	}
 
-	
-	public void setSession(HttpSession session) {
-		this.session = session;
+
+	@Override
+	public int updateBalance(String mno, int price) {
+		MyinfoDao myinfoDao = sqlSession.getMapper(MyinfoDao.class);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("mno", mno+"");
+		map.put("price", price+"");
+		return myinfoDao.updateBalance(map);
 	}
 
-	public void setPg_token(String pg_token) {
-		this.pg_token = pg_token;
+	@Override
+	public int insertDeposit(String mno, int price) {
+		MyinfoDao myinfoDao = sqlSession.getMapper(MyinfoDao.class);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("mno", mno+"");
+		map.put("price", price+"");
+		map.put("detail", "카카오페이");
+		return myinfoDao.insertDeposit(map);
 	}
-	
-	
-	/*
-	 * @Override
-	 * public int updateRookie(String mid, int price) { return 0; }
-	 */
-
-	
 	
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.merry.lotto.mypage.dao.MyinfoDao">
+  
+    <update id="updateBalance" parameterType="java.util.Map">
+        update mdetail
+        set balance = balance + #{price}
+        where mno = #{mno}
+    </update>
+    
+    <insert id="insertDeposit" parameterType="java.util.Map">   
+    	insert into deposit (mno, price, detail, date)
+        values (#{mno}, #{price}, #{detail}, now())
+    </insert>
+    
+</mapper>
