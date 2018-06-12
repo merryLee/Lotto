@@ -66,6 +66,7 @@ public class MyinfoController {
 		System.out.println("토스approve 컨트롤러진입! >>>");
 		Map<String, String> resMap = new HashMap<String, String>();
 //		resMap.put("payToken", payToken);
+		
 		MemberDetailDto memberDetailDto = (MemberDetailDto) session.getAttribute("userinfo");
 		resMap.put("mno", memberDetailDto.getMno()+"");
 		String url = tossPayService.approve(resMap);

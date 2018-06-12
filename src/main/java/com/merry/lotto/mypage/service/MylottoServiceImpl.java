@@ -25,7 +25,6 @@ public class MylottoServiceImpl implements MylottoService {
 		// public List<OlottoDto> listArticle(Map<String, String> map) {
 		MylottoDao mylottoDao = sqlSession.getMapper(MylottoDao.class);
 
-		System.out.println("서비스임플진입!");
 		int mno = 2; // Integer.parseInt(map.get("mno"));
 		int pg = 1; // Integer.parseInt(map.get("pg"));
 		int end = Constance.LIST_SIZE * pg;

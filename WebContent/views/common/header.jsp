@@ -40,7 +40,7 @@ $(document).ready(function(){
 							<a href="${root}/mylotto/list">마이페이지</a>
 							</c:if>
 							<c:if test="${userinfo.admin == 'Y'}">
-							<a href="${root}}/mylotto/list" style="margin-right: 20px">마이페이지</a>
+							<a href="${root}/mylotto/list" style="margin-right: 20px">마이페이지</a>
 							<a href="${root}/admin/adminhome">관리자페이지</a>
 							</c:if>
 							

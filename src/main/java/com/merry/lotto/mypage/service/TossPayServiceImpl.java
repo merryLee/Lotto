@@ -40,7 +40,7 @@ public class TossPayServiceImpl implements PayService {
 		JSONObject jsonObj = new JSONObject(tokener);
 
 		payToken = (String) jsonObj.get("payToken");
-		checkoutPage = "http://localhost:8008/lotto/myinfo/tossapprove";
+		checkoutPage = "https://192.168.1.101:8443/lotto/myinfo/tossapprove";
 //		checkoutPage = (String) jsonObj.get("checkoutPage");
 
 		this.PAY_TOKEN = payToken;
@@ -69,7 +69,7 @@ public class TossPayServiceImpl implements PayService {
 			jsonBody.put("productDesc", "O-Lotto");
 			jsonBody.put("apiKey", TEST_KEY);
 			jsonBody.put("autoExecute", false);
-			jsonBody.put("retUrl", "http://localhost:8008/lotto/myinfo/tossapprove");
+			jsonBody.put("retUrl", "https://192.168.1.101:8443/lotto/myinfo/tossapprove");
 
 			BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
 			bos.write(jsonBody.toString().getBytes());

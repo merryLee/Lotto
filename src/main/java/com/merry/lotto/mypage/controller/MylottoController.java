@@ -26,25 +26,19 @@ public class MylottoController {
 	
 	@RequestMapping("/list")
 	public ModelAndView list(@RequestParam Map<String, String> map, HttpServletRequest request) {
-		System.out.println("롸?");
-		
 		ModelAndView mav = new ModelAndView();
 		List<OlottoDto> list = mylottoService.listArticle(map);
 
-		System.out.println("롸!?");
 		map.put("listsize", Constance.LIST_SIZE + "");
 		PageNavigation navigation = mylottoService.makePageNavigation(map);
 		navigation.setRoot(request.getContextPath());
 
-		System.out.println("롸!--?");
 		navigation.setMylottoNavigator();
-		
-		System.out.println("롸!!!?");
+
 		mav.addObject("navigator", navigation);
 		mav.addObject("articles", list);
 //		mav.addObject("querystring", map);
 		mav.setViewName("/views/mypage/mylotto");
-		System.out.println("롸!!!????");
 		return mav;
 	}
 
