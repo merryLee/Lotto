@@ -13,7 +13,7 @@ $(document).ready(function(){
 	$("#balance").text(balance.toLocaleString());
 
 	$("#withdrawBtn").on('click', function() {
-		var value = $("#val").val();
+		var value = $("#price").val();
 		var bankcode = $("#bankcode :selected").val();
 		if(value == "" || value == undefined || value > balance) {
 			alert("출금금액을 확인하세요!");
@@ -43,7 +43,10 @@ $(document).ready(function(){
 	<div class="container py-5">
 
 	<form id="withdrawForm" name="withdrawForm" method="post">
-
+	<input type="hidden" name="mno" value="${userinfo.mno}"/>
+	<input type="hidden" name="detail" value="B"/>
+	<input type="hidden" name="wcode" value="A"/>
+	
 	<h6 class="text-dark"><strong>포인트출금</strong></h6>
 	<h6>출금하실 금액을 입력해주세요.</h6>
 	<div class="border-b my-2"></div>
@@ -52,7 +55,7 @@ $(document).ready(function(){
 			<label for="withdrawInfo" class="col-12 col-form-label col-form-label-sm">출금가능잔액 : <strong id="balance"></strong>&nbsp;원</label>
 			<label for="inputAccountNum" class="col-3 col-form-label col-form-label-sm">출금금액</label>
 			<div class="col-9">
-				<input type="text" class="form-control form-control-sm" id="val" name="val" required="required">
+				<input type="text" class="form-control form-control-sm" id="price" name="price" required="required">
 			</div>
 		</div>
 		
@@ -77,7 +80,7 @@ $(document).ready(function(){
 		<div class="form-group form-row">
 			<label for="inputAccountNum" class="col-3 col-form-label col-form-label-sm">계좌번호</label>
 			<div class="col-9">
-				<input type="text" class="form-control form-control-sm" id="accountNum" name="accountNum" required="required">
+				<input type="text" class="form-control form-control-sm" id="account_num" name="account_num" required="required">
 			</div>
 		</div>
 		<div class="form-group form-row">

@@ -14,4 +14,15 @@
         values (#{mno}, #{price}, #{detail}, now())
     </insert>
     
+    <update id="subtractBalance" parameterType="java.util.Map">
+        update mdetail
+        set balance = balance - #{price}
+        where mno = #{mno}
+    </update>
+
+    <insert id="insertWithdraw" parameterType="com.merry.lotto.mypage.model.WithdrawDto">   
+    	insert into withdraw (mno, price, detail, date, bankcode, account_num, wcode)
+        values (#{mno}, #{price}, #{detail}, now(), #{bankcode}, #{account_num}, #{wcode})
+    </insert>
+    
 </mapper>

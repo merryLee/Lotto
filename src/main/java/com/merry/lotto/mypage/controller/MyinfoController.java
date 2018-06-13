@@ -7,13 +7,13 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.merry.lotto.member.model.MemberDetailDto;
+import com.merry.lotto.mypage.model.WithdrawDto;
 import com.merry.lotto.mypage.service.MyinfoService;
 import com.merry.lotto.mypage.service.PayService;
 
@@ -73,7 +73,6 @@ public class MyinfoController {
 		System.out.println("토스approve 컨트롤러진입! >>>");
 		Map<String, String> resMap = new HashMap<String, String>();
 //		resMap.put("payToken", payToken);
-		
 		MemberDetailDto memberDetailDto = (MemberDetailDto) session.getAttribute("userinfo");
 		resMap.put("mno", memberDetailDto.getMno()+"");
 		String url = tossPayService.approve(resMap);
@@ -97,32 +96,25 @@ public class MyinfoController {
 	
 	@RequestMapping(value="/kftccharge", method=RequestMethod.POST)
 	public String openKftc(@RequestParam("radioValues") int value) {
-		System.out.println("kftc 오픈 진입!");
 		String url = kftcService.ready(value);
-//		return "redirect:" + url;
-		return opencharge();
+		return null;
 	}
 	@RequestMapping(value="/kftcapprove")
 	public String processKftc(HttpSession session) {
 		System.out.println("kftc 프로세스 진입!");
-/*		Map<String, String> resMap = new HashMap<String, String>();
-		resMap.put("pg_token", pg_token);
-		MemberDetailDto memberDetailDto = (MemberDetailDto) session.getAttribute("userinfo");
-		resMap.put("mno", memberDetailDto.getMno()+"");
-		String url = kftcService.approve(resMap);
-		return "redirect:" + url;*/
 		return null;
 	}
 	
 	
 	@RequestMapping(value="/withdraw", method=RequestMethod.POST)
-	public String applyWithdraw(@RequestParam(value="val", required=true) String val,
-			@RequestParam(value="bankcode", required=true) String bankcode,
-			@RequestParam(value="accountNum", required=true) String accountNum,
-		@RequestParam(value="name", required=true) String name) {
+	public String applyWithdraw(WithdrawDto withdrawDto) {
 		System.out.println("출금신청 진입 !!");
-		System.out.println(val + " " + bankcode + " " + accountNum + " " + name);
-		String url = "";
+		System.out.println(withdrawDto.getAccount_num() + " " + withdrawDto.getBankcode() + " " 
+		+ withdrawDto.getDate() + " " + withdrawDto.getDetail() + " "
+		+ withdrawDto.getMno() + " " + withdrawDto.getPrice() + " " 
+		+ withdrawDto.getWcode() + " " + withdrawDto.getWithdraw_no());
+		
+		String url = myinfoService.insertWithdraw(withdrawDto);
 		
 		return "redirect:" + url;
 	}
