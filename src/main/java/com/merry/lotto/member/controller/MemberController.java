@@ -70,7 +70,6 @@ public class MemberController {
 	@RequestMapping("/logincheck")
 	public @ResponseBody String loginCheck(@RequestParam(value="id", required=true) String id,
 			@RequestParam(value="pass", required=true) String pass) {
-		System.out.println("loginCheck!!");
 		int cnt = memberService.loginCheck(id, pass);
 		return cnt+"";
 	}
@@ -78,7 +77,6 @@ public class MemberController {
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String login(@RequestParam(value="id", required=true) String id,
 				@RequestParam(value="pass", required=true) String pass, HttpSession session) {
-		System.out.println(">>>>>>>>>>>>> 진입");
 		String url = "/views/index.jsp";
 		MemberDetailDto memberDetailDto = memberService.login(id, pass);
 		if(memberDetailDto == null)

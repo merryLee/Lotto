@@ -25,6 +25,27 @@
 	background-color: #F4F6F7 !important;
 }
 
+/* mypage */
+#myinfo #myname {
+	font-weight: 500;
+	font-size: 2.5rem;
+	letter-spacing: 12px;
+}
+#myinfo {
+	 background-image: url('../img/mypage/my_background.png');
+	 background-position:center top;
+	 background-size:cover;
+	 background-repeat:no-repeat;
+}
+#my_nav .my_nav_inner {
+	border-bottom: 3px solid white;
+}
+#my_nav .active {
+	border-bottom: 3px solid #0070FF;
+	color: #0070FF !important;
+}
+
+
 /* index */
 #sec2 div, #sec3 div {
 	display: table;
@@ -48,6 +69,13 @@
 		display: block;
 	}
 }
+
+#withdraw #withdrawForm .form-group {
+	margin-bottom: .5rem;
+}
+
+
+
 
 
 /* header */

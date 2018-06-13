@@ -15,7 +15,7 @@ public interface MemberDao {
 	String findId(MemberDetailDto memberDetailDto);
 	String findPass(MemberDetailDto memberDetailDto);
 	void resetPass(Map<String, String> map);
-	
+	int getRecentBalance(int mno);
 	
 /*	
 	void deleteMember(String id);

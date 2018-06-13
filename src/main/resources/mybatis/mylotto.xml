@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.merry.lotto.mypage.dao.MylottoDao">
+  
+    <select id="listArticle" parameterType="java.util.Map" resultType="com.merry.lotto.game.model.OlottoDto">
+        SELECT order_no, mno, lottono,
+			lnum1, lnum2, lnum3, lnum4, lnum5, lnum6, 
+			DATE_FORMAT(`date`, '%Y-%m-%d %p %I:%i:%S') AS `date`,
+			detail code
+		FROM (
+			SELECT * 
+			FROM (
+				SELECT  *
+				FROM `order`
+				WHERE mno = #{mno}
+				ORDER BY order_no DESC
+				LIMIT #{end}
+			) a
+			ORDER BY order_no
+			LIMIT #{size}
+		) o, progress p
+		WHERE o.code = p.code
+    </select>
+    
+</mapper>

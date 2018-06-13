@@ -13,6 +13,8 @@
 	<context:annotation-config/>
 	<context:component-scan base-package="com.merry.lotto.common.service"/>
 	<context:component-scan base-package="com.merry.lotto.member.service"/>
+	<context:component-scan base-package="com.merry.lotto.mypage.service"/>
+	<context:component-scan base-package="com.merry.lotto.game.service"/>
 	
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass" value="org.mariadb.jdbc.Driver"/>
@@ -49,6 +51,16 @@
 				<prop key="mail.smtp.starttls.enable">true</prop>
 			</props>
     	</property>
+	</bean>	
+	
+	<bean id="kakaoPayService" class="com.merry.lotto.mypage.service.KakaoPayServiceImpl">
+		<qualifier value="payKakao"></qualifier>
+	</bean>	
+	<bean id="tossPayService" class="com.merry.lotto.mypage.service.TossPayServiceImpl">
+		<qualifier value="payToss"></qualifier>
+	</bean>	
+	<bean id="kftcService" class="com.merry.lotto.mypage.service.KftcServiceImpl">
+		<qualifier value="payKftc"></qualifier>
 	</bean>	
 		
 </beans>

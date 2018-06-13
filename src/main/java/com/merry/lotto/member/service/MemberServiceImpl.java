@@ -87,4 +87,10 @@ public class MemberServiceImpl implements MemberService {
 		pwdMailSender.sendMail(email, newPwd);
 	}
 
+	@Override
+	public int getRecentBalance(int mno) {
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		return memberDao.getRecentBalance(mno);
+	}
+
 }

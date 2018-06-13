@@ -62,5 +62,11 @@
 		set pass = #{password}
 		where mid = upper(#{userid})
     </update>
+    
+    <select id="getRecentBalance" parameterType="int" resultType="int">
+        select balance
+        from mdetail
+        where mno = #{mno}
+    </select>
 
 </mapper>
