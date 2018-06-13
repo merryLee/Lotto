@@ -51,8 +51,6 @@ public class KakaoPayServiceImpl implements PayService {
 	}
 
 	private String readyRequest(int val) {
-		double vat = val * 0.1;
-		double totalVal = val + vat;
 		String result = "";
 		try {
 			String apiURL = "https://kapi.kakao.com/v1/payment/ready"; //
@@ -69,12 +67,13 @@ public class KakaoPayServiceImpl implements PayService {
 			params.append("partner_user_id=partner_user_id" + "&");
 			params.append("item_name=O-Lotto" + "&");
 			params.append("quantity=1" + "&");
-			params.append("total_amount=" + (int) totalVal + "&");
-			params.append("vat_amount=" + (int) vat + "&");
+			params.append("total_amount=" + val + "&");
+			params.append("vat_amount=0" + "&");
 			params.append("tax_free_amount=0" + "&");
-			params.append("approval_url=http://localhost:8008/lotto/myinfo/kakaoapprove" + "&");
-			params.append("fail_url=http://localhost:8008/lotto/myinfo/chargefail" + "&");
-			params.append("cancel_url=http://localhost:8008/lotto/myinfo/chargefail");
+			params.append("payment_method_type=MONEY" + "&");
+			params.append("approval_url=http://localhost:8080/lotto/myinfo/kakaoapprove" + "&");
+			params.append("fail_url=http://localhost:8080/lotto/myinfo/chargefail" + "&");
+			params.append("cancel_url=http://localhost:8080/lotto/myinfo/chargefail");
 			con.setDoOutput(true);
 			DataOutputStream wr = new DataOutputStream(con.getOutputStream());
 			wr.writeBytes(params.toString());

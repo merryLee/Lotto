@@ -10,6 +10,9 @@ $(document).ready(function(){
 	$("#chargeBtn").on('click', function() {
 		window.open("${root}/myinfo/charge", "포인트 충전", "width=360,height=545,top=100,left=100,location=no,status=no,titlebar=no,toolbar=no,resizable=no,scrollbars=no");
 	});
+	$("#withdrawBtn").on('click', function() {
+		window.open("${root}/myinfo/withdraw", "포인트 출금", "width=360,height=545,top=100,left=100,location=no,status=no,titlebar=no,toolbar=no,resizable=no,scrollbars=no");
+	});
 	
 });
 </script>
@@ -23,6 +26,6 @@ $(document).ready(function(){
 	</div>
 	<span style="vertical-align: middle;">로또포인트&nbsp;<strong id="balance"></strong>&nbsp;원</span>
 	<button id="chargeBtn" type="button" class="ml-2 btn btn-sm btn-primary">충전</button>
-	<button id="" type="button" class="ml-2 btn btn-sm btn-outline-primary">출금</button>
+	<button id="withdrawBtn" type="button" class="ml-2 btn btn-sm btn-outline-primary">출금</button>
 </div>
 </div>

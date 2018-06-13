@@ -7,16 +7,16 @@
 </head>
 <body>
 <script>
-$(document).attr('title', 'O Lotto - 포인트 충전하기');
+$(document).attr('title', 'O Lotto - 포인트 출금하기');
 $(document).ready(function(){
-	$("#chargeFailBtn").on('click', function() {
+	$("#withdrawFailBtn").on('click', function() {
 		$(opener.location).attr('href','${root}/mylotto/list');
 		self.close();
 	});
 });
 </script>
 
-<div id="chargefail">
+<div id="withdrawfail">
 
 	<header class="sticky-top" style="background-color: white;">
 		<nav class="navbar navbar-expand-md border-b">
@@ -30,11 +30,11 @@ $(document).ready(function(){
 
 		<div class="row text-center py-5">
 		<div class="col-md-12 align-self-center">
-			<h6 class="text-dark"><strong>충전실패</strong></h6>
-			<label>포인트 충전에 실패하였습니다.</label>
+			<h6 class="text-dark"><strong>출금실패</strong></h6>
+			<label>포인트 출금에 실패하였습니다.</label>
 			<div class="border-b"></div>
 			<div class="py-5">
-				<button id="#chargeFailBtn" type="button" class="btn btn-sm btn-primary">확인</button>
+				<button id="withdrawFailBtn" type="button" class="btn btn-sm btn-primary">확인</button>
 			</div>
 		</div>
 		</div>
@@ -51,7 +51,7 @@ $(document).ready(function(){
 		</div>
 	</div>
 
-</div> <!-- chargefail -->
+</div> <!-- withdrawfail -->
 <jsp:include page="/views/common/optional.jsp"></jsp:include>
 </body>
 </html>

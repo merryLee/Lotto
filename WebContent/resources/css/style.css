@@ -70,6 +70,13 @@
 	}
 }
 
+#withdraw #withdrawForm .form-group {
+	margin-bottom: .5rem;
+}
+
+
+
+
 
 /* header */
 #header, #header a {

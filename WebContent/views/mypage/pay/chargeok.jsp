@@ -9,7 +9,10 @@
 <script>
 $(document).attr('title', 'O Lotto - 포인트 충전하기');
 $(document).ready(function(){
-	
+	$("#chargeOkBtn").on('click', function() {
+		$(opener.location).attr('href','${root}/mylotto/list');
+		self.close();
+	});
 });
 </script>
 

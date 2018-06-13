@@ -29,6 +29,9 @@ public class MyinfoController {
 	@Autowired
 	@Qualifier("payToss")
 	private PayService tossPayService;
+	@Autowired
+	@Qualifier("payKftc")
+	private PayService kftcService;
 	
 	@RequestMapping(value="/mylotto", method=RequestMethod.GET)
 	public String mvmylotto() {
@@ -53,6 +56,10 @@ public class MyinfoController {
 	@RequestMapping(value="/chargefail")
 	public String openchargefail() {
 		return "redirect:/views/mypage/pay/chargefail.jsp";
+	}
+	@RequestMapping(value="/withdraw", method=RequestMethod.GET)
+	public String openwithdraw() {
+		return "redirect:/views/mypage/pay/withdraw.jsp";
 	}
 
 	@RequestMapping(value="/tosscharge", method=RequestMethod.POST)
@@ -88,5 +95,36 @@ public class MyinfoController {
 		return "redirect:" + url;
 	}
 	
+	@RequestMapping(value="/kftccharge", method=RequestMethod.POST)
+	public String openKftc(@RequestParam("radioValues") int value) {
+		System.out.println("kftc 오픈 진입!");
+		String url = kftcService.ready(value);
+//		return "redirect:" + url;
+		return opencharge();
+	}
+	@RequestMapping(value="/kftcapprove")
+	public String processKftc(HttpSession session) {
+		System.out.println("kftc 프로세스 진입!");
+/*		Map<String, String> resMap = new HashMap<String, String>();
+		resMap.put("pg_token", pg_token);
+		MemberDetailDto memberDetailDto = (MemberDetailDto) session.getAttribute("userinfo");
+		resMap.put("mno", memberDetailDto.getMno()+"");
+		String url = kftcService.approve(resMap);
+		return "redirect:" + url;*/
+		return null;
+	}
+	
+	
+	@RequestMapping(value="/withdraw", method=RequestMethod.POST)
+	public String applyWithdraw(@RequestParam(value="val", required=true) String val,
+			@RequestParam(value="bankcode", required=true) String bankcode,
+			@RequestParam(value="accountNum", required=true) String accountNum,
+		@RequestParam(value="name", required=true) String name) {
+		System.out.println("출금신청 진입 !!");
+		System.out.println(val + " " + bankcode + " " + accountNum + " " + name);
+		String url = "";
+		
+		return "redirect:" + url;
+	}
 
 }

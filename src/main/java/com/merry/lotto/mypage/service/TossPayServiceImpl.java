@@ -3,6 +3,7 @@ package com.merry.lotto.mypage.service;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.HashMap;
@@ -53,12 +54,12 @@ public class TossPayServiceImpl implements PayService {
 		double totalVal = val + vat;
 		
 		URL url = null;
-		URLConnection connection = null;
+		HttpURLConnection connection = null;
 		StringBuilder responseBody = new StringBuilder();
 		try {
 			url = new URL("https://pay.toss.im/api/v1/payments");
-			connection = url.openConnection();
-			connection.addRequestProperty("Content-Type", "application/json");
+			connection = (HttpURLConnection) url.openConnection();
+			connection.setRequestProperty("Content-Type", "application/json");
 			connection.setDoOutput(true);
 			connection.setDoInput(true);
 

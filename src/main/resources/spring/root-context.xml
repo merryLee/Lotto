@@ -59,7 +59,8 @@
 	<bean id="tossPayService" class="com.merry.lotto.mypage.service.TossPayServiceImpl">
 		<qualifier value="payToss"></qualifier>
 	</bean>	
-		
-		
+	<bean id="kftcService" class="com.merry.lotto.mypage.service.KftcServiceImpl">
+		<qualifier value="payKftc"></qualifier>
+	</bean>	
 		
 </beans>

@@ -32,6 +32,16 @@ function kakaoCharge() {
 		$("#chargeForm").submit();
 	}
 }
+function kftcCharge() {
+ 	var balance = $("input:radio[name=radioValues]:checked").val();
+	if(balance == "" || balance == undefined) {
+		alert("충전금액을 확인하세요!");
+		return;
+	} else {
+		$("#chargeForm").attr('action', '${root}/myinfo/kftccharge');
+		$("#chargeForm").submit();
+	}
+}
 </script>
 
 <div id="charge">
@@ -88,7 +98,9 @@ function kakaoCharge() {
 	<div class="border-b my-2"></div>
 	
 	<div class="text-center">
-	<a href="javascript: tossCharge();"><img src="${root}/resources/img/mypage/toss.png" class="img-fluid mx-1" style="border-radius: 5px;"></a>
+<!-- 	<a href="javascript: tossCharge();"> -->
+	<a href="javascript: kftcCharge();">
+	<img src="${root}/resources/img/mypage/toss.png" class="img-fluid mx-1" style="border-radius: 5px;"></a>
 	<a href="javascript: kakaoCharge();"><img src="${root}/resources/img/mypage/kakaopay.png" class="img-fluid mx-1" style="border-radius: 5px;"></a>
 	</div>
 	</form>

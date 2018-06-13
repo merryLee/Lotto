@@ -10,6 +10,7 @@ public interface MemberService {
 	MemberDetailDto login(String id, String pass);
 	String findId(MemberDetailDto memberDetailDto);
 	String findPass(MemberDetailDto memberDetailDto);
+	int getRecentBalance(int mno);
 	
 	
 	/*
